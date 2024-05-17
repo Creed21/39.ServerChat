@@ -3,6 +3,13 @@ package server;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * This class is responsible for handling communication with the client.
+ * It reads messages from the client and sends messages to the client.
+ * It is a thread that runs in the server.
+ * <p>IT WILL BE DELETED IN THE NEXT VERSION</p>
+ */
+@Deprecated
 public class ClientThread extends Thread {
     private final Socket clientSocket;
     private BufferedReader reader;
