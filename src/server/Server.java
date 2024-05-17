@@ -24,9 +24,15 @@ public class Server {
             System.out.println("Waiting for new client connection. . .");
             try {
                 Socket clientSocket = serverSocket.accept();
-                Thread newClientThread = new ClientThread(clientSocket);
+
+                Thread newClientReadingThread = new ClientReadingThread(clientSocket);
                 System.out.println("new client connection started: " + clientSocket);
-                newClientThread.start();
+                newClientReadingThread.start();
+
+                Thread newClientWritingThread = new ClientWritingThread(clientSocket);
+                System.out.println("new client connection started: " + clientSocket);
+                newClientWritingThread.start();
+
             } catch (IOException e) {
                 System.out.println("Failed to accept client connection");
                 System.out.println(e.getMessage());
